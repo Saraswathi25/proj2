@@ -127,9 +127,13 @@ searchInput.addEventListener("input", (event) => {
     taskBody.insertAdjacentHTML("beforeend", getTaskEl(item));
   });
 
-  taskSec = document.querySelectorAll(".taskSec");
+  taskSec = document.querySelectorAll(".tskEdit");
+  tskDelete = document.querySelectorAll(".tskDelete");
   taskSec.forEach((item) => {
     item.addEventListener("click", updateTask);
+  });
+  tskDelete.forEach((item) => {
+    item.addEventListener("click", deleteTask);
   });
 });
 
@@ -179,9 +183,13 @@ tabItem.addEventListener("click", (event) => {
       taskBody.insertAdjacentHTML("beforeend", getTaskEl(item));
     });
   }
-  taskSec = document.querySelectorAll(".taskSec");
+  taskSec = document.querySelectorAll(".tskEdit");
+  tskDelete = document.querySelectorAll(".tskDelete");
   taskSec.forEach((item) => {
     item.addEventListener("click", updateTask);
+  });
+  tskDelete.forEach((item) => {
+    item.addEventListener("click", deleteTask);
   });
 });
 
@@ -347,11 +355,12 @@ const getTask = async () => {
     const tasks = await response.json();
     // Clear existing tasks from the UI
     taskBody.innerHTML = "";
-    taskData=tasks;
+    taskData = tasks;
     console.log(tasks);
     tasks.forEach((item) => {
       taskBody.insertAdjacentHTML("beforeend", getTaskEl(item));
     });
+
     taskSec = document.querySelectorAll(".tskEdit");
     tskDelete = document.querySelectorAll(".tskDelete");
     taskSec.forEach((item) => {
